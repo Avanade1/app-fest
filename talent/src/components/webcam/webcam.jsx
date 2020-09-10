@@ -1,29 +1,29 @@
 import React from 'react';
 import Webcam from 'react-webcam';
 import { MuiThemeProvider } from '@material-ui/core/styles';
-import { Theme} from 'laboratoria-ui';
+import { Theme } from 'laboratoria-ui';
 import './webcam.css';
 
 
 const WebcamCapture = (props) => {
   const webcamRef = React.useRef(null);
-  const [imgSrc, setImgSrc] = React.useState(null);
+  // const [imgSrc, setImgSrc] = React.useState(null);
+
+  const { callBack } = props;
 
   const {callBack} = props
 
   const capture = React.useCallback(() => {
     var imageSrc = webcamRef.current.getScreenshot();
-    console.log(imageSrc);
-    setImgSrc(imageSrc);
+    // console.log(imageSrc);
+    // setImgSrc(imageSrc);
     var buff = new Buffer(
       imageSrc.replace(/^data:image\/(png|gif|jpeg);base64,/, ""),
       "base64"
     );
 
-    return callBack(buff)
-
-
-  }, [webcamRef, setImgSrc, callBack]);
+    callBack(buff);
+  }, [webcamRef, callBack]);
 
   //   var options = {
   //     method: 'POST',
@@ -55,18 +55,18 @@ const WebcamCapture = (props) => {
   const videoConstraints = {
     width: 800,
     height: 800,
-    facingMode: "user"
+    facingMode: "user",
   };
 
   return (
     <MuiThemeProvider theme={Theme}>
-      <div className='center-block'>
+      <div className="center-block">
         <Webcam
           audio={false}
           ref={webcamRef}
           screenshotFormat="image/jpeg"
           mirrored={true}
-          className='photo'
+          className="photo"
           width={800}
           height={800}
           videoConstraints={videoConstraints}

@@ -13,8 +13,7 @@ function App() {
       {/*<Register/>*/}
     <Login/>
     </MuiThemeProvider>
-    
   );
-}
+};
 
 export default App;
