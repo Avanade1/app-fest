@@ -1,0 +1,35 @@
+footer {
+	background-color: whitesmoke;
+	margin-top: auto;
+}
+
+#footer-container-copyright {
+	align-items: center;
+	background: #1a1d52;
+	display: flex;
+	height: 3em;
+	justify-content: center;
+}
+
+address {
+	align-items: flex-end;
+	color: #0722b0;;
+	display: flex;
+	font-size: 0.5em;
+	font-style: normal;
+	height: 9em;
+	justify-content: space-evenly;
+	margin: auto;
+	width: 70%;
+}
+
+.address-contact {
+	align-self: flex-start;
+	font-size: 2em;
+	text-align: center;
+}
+
+.address-p {
+	margin: 0.5em 0;
+}
+
