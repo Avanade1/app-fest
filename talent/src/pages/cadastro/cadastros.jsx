@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import Header from "../../components/header/header";
 import WebcamCapture from "../../components/webcam/webcam";
 import BtnP from "../../components/button/button";
-import Typography from '@material-ui/core/Typography';
+import Typography from "@material-ui/core/Typography";
+import Swal from "sweetalert2";
 
 import { faceClient, personGroupId } from "../../faceclient";
 
@@ -15,9 +16,11 @@ const Register = (props) => {
   };
 
   const callBackCaptureImage = (file) => {
-    alert("Capturou a imagem");
     if (!name || !company) {
-      alert("Digite seu nome e sua empresa");
+      Swal.fire({
+        text: "Digite seu nome e sua empresa",
+        confirmButtonColor: '#F8009E'
+      });
       return false;
     }
 
@@ -28,14 +31,29 @@ const Register = (props) => {
           .addFaceFromStream(personGroupId, person.personId, file)
           .then(() => {
             faceClient.personGroup.train(personGroupId);
-            alert(`Olá ${name} seu cadastrado foi feito com sucesso!`);
+            Swal.fire({
+              icon: 'success',
+              title: 'Foi!',
+              text: `Olá ${name} seu cadastrado foi feito com sucesso!`,
+              confirmButtonColor: '#F8009E'
+            })
           })
           .catch(() => {
-            alert(`Erro ao reconhecer a imagem do rosto, tente novamente.`);
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Erro ao reconhecer a imagem</br> do rosto, tente novamente.',
+              confirmButtonColor: '#F8009E'
+            })
           });
       })
       .catch(() => {
-        alert(`Erro ao cadastrar o usuário, tente novamente.`);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Erro ao cadastrar o usuário,</br> tente novamente.',
+          confirmButtonColor: '#F8009E'
+        })
       });
   };
 
