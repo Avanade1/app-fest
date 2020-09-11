@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Header from "../../components/header/header";
 import WebcamCapture from "../../components/webcam/webcam";
-import Footer from "../../components/footer/footer";
 import BtnP from "../../components/button/button";
+import Typography from '@material-ui/core/Typography';
 
 import { faceClient, personGroupId } from "../../faceclient";
 
@@ -43,29 +43,52 @@ const Register = (props) => {
     <>
       <Header />
 
-      <BtnP color="secondary" size="small" onClick={routeLogin}>
-        Ir para login
-      </BtnP>
+      <div className="float-left">
+        <BtnP color="secondary" size="medium" onClick={routeLogin}>
+          Fazer login
+        </BtnP>
+      </div>
+      
+      <div className="space-small">
+        <Typography variant="h1" align="center">
+          Talent Fest
+        </Typography>
+        <Typography variant="h2" align="center">
+          2021
+        </Typography>
+      </div>
+      <div className="space-small">
+        <Typography variant="button" align="center">
+          Agilize seu acesso, cadastre-se.
+        </Typography>
+      </div>
 
-      <section>
-        <label>Digite seu nome</label>
-        <input
-          type="text"
-          onChange={(e) => {
-            setName(e.target.value);
-          }}
-          value={name}
-        />
 
-        <label>Digite o nome da sua empresa</label>
-        <input
-          type="text"
-          onChange={(e) => {
-            setCompany(e.target.value);
-          }}
-          value={company}
-        />
-      </section>
+      <form>
+        <fieldset>
+          <label>
+            Nome
+            <input
+              type="text"
+              onChange={(e) => {
+                setName(e.target.value);
+              }}
+              value={name}
+            />
+          </label>
+          
+          <label>
+            Empresa
+            <input
+              type="text"
+              onChange={(e) => {
+                setCompany(e.target.value);
+              }}
+              value={company}
+            />
+          </label>
+        </fieldset>
+      </form>
 
       <WebcamCapture
         callBack={callBackCaptureImage}
@@ -73,7 +96,6 @@ const Register = (props) => {
         labelButton="Cadastrar"
       />
 
-      <Footer />
     </>
   );
 };

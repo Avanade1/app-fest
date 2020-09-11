@@ -85,16 +85,16 @@ const Login = (props) => {
       <Header/>
       <section>
         <div className="space-big">
-          <Typography variant="h2" align="center">
+          <Typography variant="h1" align="center">
             Talent Fest
           </Typography>
-          <Typography variant="h3" align="center">
+          <Typography variant="h2" align="center">
             2021
           </Typography>
         </div>
         <div className="space-small">
-          <Typography variant="h4" align="center">
-            Olá! Bem-vindo!
+          <Typography variant="h3" align="center">
+            Olá! Bem vinde!
           </Typography>
           <Typography variant="subtitle1" align="center">
             Estamos te aguardando :D
@@ -105,9 +105,11 @@ const Login = (props) => {
           enableButton="true"
           labelButton="Login"
         />
-        <BtnP color="secondary" size="small" onClick={routeRegister}>
-          Cadastre-se
-        </BtnP>
+        <div className="float-top">
+          <BtnP color="secondary" size="medium" onClick={routeRegister}>
+            Cadastre-se
+          </BtnP>
+        </div>
         <Footer />
       </section>
     </>
