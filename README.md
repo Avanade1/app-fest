@@ -14,7 +14,10 @@
     
    6. [Futuras Implementações](#6-Futuras-implementações)
     
-   7. [Considerações Finais](#7-Considerações-finais)
+   7. [Instalação](#7-Instalação)
+
+   8. [Considerações Finais](#8-Considerações-finais)
+
 
 ## 1. Visão do Projeto
 
@@ -84,9 +87,19 @@ Para definição estrutural das interfaces criadas, foram eleborados um wirefram
 ## 6. Futuras Implementações
 
 -   Segurança via e-mail registrado;
+-   Implementação de retorno automático sem auxílio da interface;
 -   Separação da estruturação da API do front-end para o back-end;
 
-## 7. Considerações Finais
+## 7. Instalação
+
+Nesse projeto é necessário utilizar alguns comandos para o correto funcionamento do site.
+Após o clone deste repositório importante ter o Node.JS e o NPM instalados em sua máquina.
+Para isso execute seguintes comandos em seu terminal:
+
+- npm install para instalar todas as dependências contidas no projeto.
+- npm start, o qual vai inicializar o servidor e possibilitar a visualização do projeto.
+
+## 8. Considerações Finais
 
 Esta aplicação foi desenvolvida por:
 [Adélia Carvalho](https://github.com/adeliacristine)
