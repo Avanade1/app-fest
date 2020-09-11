@@ -3,9 +3,9 @@ import './footer.css';
 
 function Footer() {
   return (
-    <div className="footer">
-      Desenvolvido por Adélia Carvalho, Ana Carolina Ramos, Karine Pereira e Tamires Pereira
-    </div>
+    <footer>
+      Desenvolvido por Adélia Carvalho, Ana Carolina Ramos, Karina Pereira e Tamires Cordeiro
+    </footer>
   );
 };
 
