@@ -21,8 +21,8 @@ const WebcamCapture = (props) => {
   }, [webcamRef, callBack]);
 
   const videoConstraints = {
-    width: 800,
-    height: 800,
+    width: 1200,
+    height: 1600,
     facingMode: "user",
   };
 
@@ -35,8 +35,8 @@ const WebcamCapture = (props) => {
           screenshotFormat="image/jpeg"
           mirrored={true}
           className="photo"
-          width={800}
-          height={800}
+          width={1200}
+          height={1600}
           videoConstraints={videoConstraints}
         />
         {props.enableButton && (
