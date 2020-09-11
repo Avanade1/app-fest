@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import Hearder from "../../components/header/header";
+import Header from "../../components/header/header";
 import WebcamCapture from "../../components/webcam/webcam";
-import Footer from "../../components/footer/footer";
 import BtnP from "../../components/button/button";
+import Typography from '@material-ui/core/Typography';
 
 import { faceClient, personGroupId } from "../../faceclient";
 
@@ -15,9 +15,9 @@ const Register = (props) => {
   };
 
   const callBackCaptureImage = (file) => {
-    alert("capturou a imagem");
+    alert("Capturou a imagem");
     if (!name || !company) {
-      alert("Deve digitar um nome e uma descrição");
+      alert("Digite seu nome e sua empresa");
       return false;
     }
 
@@ -26,61 +26,76 @@ const Register = (props) => {
       .then((person) => {
         faceClient.personGroupPerson
           .addFaceFromStream(personGroupId, person.personId, file)
-          .then((response) => {
-            console.log(response);
-
+          .then(() => {
             faceClient.personGroup.train(personGroupId);
-
-            alert(`Ola ${name} foi cadastrado com sucesso!`);
+            alert(`Olá ${name} seu cadastrado foi feito com sucesso!`);
           })
-          .catch((err) => {
-            console.log("erro ao criar person face....", err);
-            alert(
-              "Erro ao reconhecer a imagem do rosto, por favor tente novamente!"
-            );
+          .catch(() => {
+            alert(`Erro ao reconhecer a imagem do rosto, tente novamente.`);
           });
       })
-      .catch((err) => {
-        console.log("erro ao criar person....", err);
-        alert("Erro ao cadastrar o usuario, por favor tente novamente!");
+      .catch(() => {
+        alert(`Erro ao cadastrar o usuário, tente novamente.`);
       });
   };
 
   return (
     <>
-      <Hearder />
+      <Header />
 
-      <BtnP color="secondary" size="small" onClick={routeLogin}>
-        Ir para login
-      </BtnP>
+      <div className="float-left">
+        <BtnP color="secondary" size="medium" onClick={routeLogin}>
+          Fazer login
+        </BtnP>
+      </div>
+      
+      <div className="space-small">
+        <Typography variant="h1" align="center">
+          Talent Fest
+        </Typography>
+        <Typography variant="h2" align="center">
+          2021
+        </Typography>
+      </div>
+      <div className="space-small">
+        <Typography variant="button" align="center">
+          Agilize seu acesso, cadastre-se.
+        </Typography>
+      </div>
 
-      <section>
-        <label>Digite seu nome</label>
-        <input
-          type="text"
-          onChange={(e) => {
-            setName(e.target.value);
-          }}
-          value={name}
-        />
 
-        <label>Digite o nome da sua empresa</label>
-        <input
-          type="text"
-          onChange={(e) => {
-            setCompany(e.target.value);
-          }}
-          value={company}
-        />
-      </section>
+      <form>
+        <fieldset>
+          <label>
+            Nome
+            <input
+              type="text"
+              onChange={(e) => {
+                setName(e.target.value);
+              }}
+              value={name}
+            />
+          </label>
+          
+          <label>
+            Empresa
+            <input
+              type="text"
+              onChange={(e) => {
+                setCompany(e.target.value);
+              }}
+              value={company}
+            />
+          </label>
+        </fieldset>
+      </form>
 
       <WebcamCapture
         callBack={callBackCaptureImage}
         enableButton="true"
-        labelButton="Tirar sua foto para acessar"
+        labelButton="Cadastrar"
       />
 
-      <Footer />
     </>
   );
 };

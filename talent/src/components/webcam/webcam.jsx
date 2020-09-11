@@ -11,8 +11,8 @@ const WebcamCapture = (props) => {
   const { callBack } = props;
 
   const capture = React.useCallback(() => {
-    var imageSrc = webcamRef.current.getScreenshot();
-    var buff = new Buffer(
+    let imageSrc = webcamRef.current.getScreenshot();
+    let buff = new Buffer(
       imageSrc.replace(/^data:image\/(png|gif|jpeg);base64,/, ""),
       "base64"
     );
@@ -40,7 +40,7 @@ const WebcamCapture = (props) => {
           videoConstraints={videoConstraints}
         />
         {props.enableButton && (
-          <BtnP color="secondary" size="small" onClick={capture}>
+          <BtnP color="secondary" size="medium" onClick={capture}>
             {props.labelButton}
           </BtnP>
         )}

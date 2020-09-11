@@ -10,6 +10,7 @@
 
 # production
 /build
+faceclient.js
 
 # misc
 .DS_Store

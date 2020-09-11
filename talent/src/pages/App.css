@@ -2,9 +2,49 @@ body{
   background:#ffe521;
 }
 .space-big {
-  margin-top: 30px;
+  margin-top: 50px;
 }
 
 .space-small {
   margin-top: 15px;
+}
+
+.float-top {
+  position: fixed;
+  right: 0;
+  top: 8px;
+}
+
+.float-left {
+  position: fixed;
+  left: 0;
+  top: 8px;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+}
+
+fieldset {
+  display: flex;
+  border: none;
+  flex-direction: column;
+}
+
+label {
+  display: flex;
+  font-family: Opens Sans, sans-serif;
+  flex-direction: column;
+  margin-top: 10px;
+  letter-spacing: 0.03em;
+}
+
+input {
+  width: 223px;
+  padding: 5px 10px;
+  height: 32px;
+  border: none;
+  font-size: 15px;
+  margin-top: 5px;
 }
