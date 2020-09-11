@@ -4,6 +4,7 @@ import WebcamCapture from "../../components/webcam/webcam";
 import Footer from "../../components/footer/footer";
 import BtnP from "../../components/button/button";
 import Typography from '@material-ui/core/Typography';
+import Swal from "sweetalert2";
 
 
 import { faceClient, personGroupId } from "../../faceclient";
@@ -20,7 +21,12 @@ const Login = (props) => {
             .then(async (face) => {
               try {
                 if (face.length === 0) {
-                  alert(`Não foi possível validar a imagem, tente novamente.`);
+                  Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: `Não foi possível validar a imagem, tente novamente.`,
+                    confirmButtonColor: '#F8009E'
+                  })
                   return false;
                 }
 
@@ -38,7 +44,10 @@ const Login = (props) => {
                     clientIdentify.length === 0 ||
                     clientIdentify[0].candidates.length === 0
                   ) {
-                    alert(`Usuário não está cadastrado.`);
+                    Swal.fire({
+                      text: "Usuário não está cadastrado.",
+                      confirmButtonColor: '#F8009E'
+                    });
                     return false;
                   }
 
@@ -56,23 +65,44 @@ const Login = (props) => {
                       personId
                     );
 
-                    alert(`Olá ${person.name} da ${person.userData} seja muito bem vinde.`);
+                    Swal.fire({
+                      text: `Olá ${person.name} da ${person.userData} seja muito bem vinde.`,
+                      confirmButtonColor: '#F8009E'
+                    });
                   } else {
-                    alert(`Usuário não encontrado, tente novamente.`);
+                    Swal.fire({
+                      text: "Usuário não encontrado, tente novamente.",
+                      confirmButtonColor: '#F8009E'
+                    });
                   }
+
                 } catch (err) {
-                  alert(`Usuário não cadastrado.`);
+                  Swal.fire({
+                    text: "Usuário não cadastrado.",
+                    confirmButtonColor: '#F8009E'
+                  });
                 }
               } catch (err) {
-                alert(`Erro ao capturar a imagem, tente novamente.`);
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'Erro ao capturar a imagem, tente novamente.',
+                  confirmButtonColor: '#F8009E'
+                });
               }
             });
           } else {
-            alert(`Aguarde para fazer a validação.`);
+            Swal.fire({
+              text: "Aguarde para fazer a validação.",
+              confirmButtonColor: '#F8009E'
+            });
         }
       })
       .catch(() => {
-        alert(`Ocorreu um erro, tente novamente.`);
+        Swal.fire({
+          text: "Ocorreu um erro, tente novamente.",
+          confirmButtonColor: '#F8009E'
+        });
       });
   };
 
