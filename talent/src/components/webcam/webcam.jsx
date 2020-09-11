@@ -40,7 +40,7 @@ const WebcamCapture = (props) => {
           videoConstraints={videoConstraints}
         />
         {props.enableButton && (
-          <BtnP color="secondary" size="small" onClick={capture}>
+          <BtnP color="secondary" size="medium" onClick={capture}>
             {props.labelButton}
           </BtnP>
         )}
